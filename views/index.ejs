@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+    integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .note-card {
+      box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+      background-color: #34989d;
+      color: #fff;
+    }
+
+    .note-header {
+      background-color: #17458c;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .note-form {
+      background-color: #17458c;
+      padding: 20px;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+  </style>
+  <title>Note Taking App</title>
+</head>
+
+<body>
+  <div class="jumbotron text-center bg-info text-light">
+    <h1 style="float: left;">Note Taking App</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="note-header">
+          <h2>Saved Notes</h2>
+        </div>
+        <% notes.reverse().forEach(function(note) { %>
+          <div class="note-card text-white">
+            <h4>
+              <%= note.title %>
+            </h4>
+            <p>
+              <%= note.body %>
+            </p>
+            <form action="/delete/<%= note.id %>" method="post">
+              <button type="submit" class="btn btn-danger">
+                <i class="fas fa-trash-alt"></i> 
+              </button>
+            </form>
+          </div>
+          <% }); %>
+      </div>
+      <div class="col-md-4">
+        <div class="note-header">
+          <h2>Add a Note</h2>
+        </div>
+        <div class="note-form text-white">
+          <form action="/save" method="post">
+            <div class="form-group">
+              <label for="title">Title:</label>
+              <input type="text" class="form-control" id="title" name="title">
+            </div>
+            <div class="form-group">
+              <label for="body">Note:</label>
+              <textarea class="form-control" id="body" name="body"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">
+              <i class="fas fa-save"></i> 
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
