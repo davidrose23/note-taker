@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const fs = require('fs');
+var data = require(process.env.DATA_FILE_PATH);
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -12,7 +13,8 @@ app.get('/favicon.ico', (req, res) => {
     res.status(204).end();
 });
 
-process.env.JSON_FILE_PATH = "./data.json";
+
+
 
 
 
