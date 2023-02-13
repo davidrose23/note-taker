@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const fs = require('fs');
-var data = require(process.env.DATA_FILE_PATH);
+const port = process.env.PORT || 3000
 
 app.use(express.static('public'));
 app.use(bodyParser.json());
@@ -69,6 +69,6 @@ app.post('/delete/:id', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log('Server started on port 3000');
 });
