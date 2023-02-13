@@ -13,10 +13,6 @@ app.get('/favicon.ico', (req, res) => res.status(204));
 
 
 
-
-
-
-
 app.get('/', (req, res) => {
     res.render('landing');
 });
@@ -69,6 +65,6 @@ app.post('/delete/:id', (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
+app.listen(port, () => {
     console.log('Server started on port 3000');
 });
